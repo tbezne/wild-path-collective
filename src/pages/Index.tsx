@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-mountains.jpg";
 import communityImage from "@/assets/community.jpg";
 import aboutTeamImage from "@/assets/about-team.jpg";
+import bikepackingImage from "@/assets/bikepacking-hero.jpg";
 import { adventures, upcomingTrips } from "@/lib/data";
 import { Compass, Users, Mountain } from "lucide-react";
 
@@ -18,10 +19,10 @@ const Hero = () => (
     <div className="absolute inset-0 bg-charcoal/40" />
     <div className="relative z-10 text-center section-padding max-w-3xl mx-auto">
       <h1 className="heading-xl text-primary-foreground mb-6 animate-fade-in">
-        Go further. Together.
+        Move together. Discover together.
       </h1>
       <p className="body-lg text-primary-foreground/80 mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-        Small-group adventures in the world's most untouched landscapes.
+        Community-driven adventures in the world's most beautiful landscapes.
       </p>
       <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
         <Button variant="hero" size="lg" asChild>
@@ -41,7 +42,7 @@ const Values = () => (
         { icon: Mountain, title: "Expert Guides", text: "People who know the land and love sharing it." },
       ].map((v) => (
         <div key={v.title} className="flex flex-col items-center gap-4">
-          <v.icon className="text-forest" size={28} strokeWidth={1.5} />
+          <v.icon className="text-sky-dark" size={28} strokeWidth={1.5} />
           <h3 className="heading-sm">{v.title}</h3>
           <p className="body-md text-muted-foreground max-w-xs">{v.text}</p>
         </div>
@@ -71,13 +72,39 @@ const FeaturedAdventures = () => (
               />
             </div>
             <p className="body-sm text-muted-foreground uppercase tracking-widest mb-1">{a.location}</p>
-            <h3 className="heading-sm mb-2 group-hover:text-forest transition-colors">{a.title}</h3>
+            <h3 className="heading-sm mb-2 group-hover:text-sky-dark transition-colors">{a.title}</h3>
             <p className="body-sm text-muted-foreground">
               {a.duration} · From €{a.price}
             </p>
           </Link>
         ))}
       </div>
+    </div>
+  </section>
+);
+
+const BikepackingTeaser = () => (
+  <section className="relative h-[60vh] min-h-[450px] flex items-center overflow-hidden">
+    <img
+      src={bikepackingImage}
+      alt="Bikepacker riding through rolling hills in eastern Slovenia"
+      className="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+      width={1920}
+      height={1080}
+    />
+    <div className="absolute inset-0 bg-charcoal/50" />
+    <div className="relative z-10 section-padding max-w-2xl">
+      <p className="body-sm text-primary-foreground/70 uppercase tracking-widest mb-3">New</p>
+      <h2 className="heading-lg text-primary-foreground mb-6">
+        Bikepacking Eastern Slovenia
+      </h2>
+      <p className="body-lg text-primary-foreground/80 mb-8">
+        3 days through vineyards, hills, and hidden villages. Our first bikepacking adventure.
+      </p>
+      <Button variant="hero" size="lg" asChild>
+        <Link to="/bikepacking">Learn More</Link>
+      </Button>
     </div>
   </section>
 );
@@ -116,7 +143,7 @@ const UpcomingTrips = () => (
             className="flex flex-col md:flex-row md:items-center justify-between py-5 gap-2 md:gap-0 group"
           >
             <span className="body-sm text-muted-foreground w-36">{trip.date}</span>
-            <span className="body-md font-medium flex-1 group-hover:text-forest transition-colors">{trip.name}</span>
+            <span className="body-md font-medium flex-1 group-hover:text-sky-dark transition-colors">{trip.name}</span>
             <span className="body-sm text-muted-foreground w-40">{trip.location}</span>
             <span className="body-sm text-muted-foreground w-28 text-right">
               {trip.spotsLeft} spot{trip.spotsLeft !== 1 ? "s" : ""} left
@@ -147,7 +174,7 @@ const AboutTeaser = () => (
       <div>
         <h2 className="heading-lg mb-6">Built by people who live outdoors.</h2>
         <p className="body-lg text-muted-foreground mb-8">
-          We started Terra because we believe the best way to experience nature is slowly, intentionally, and with people you trust.
+          We started Found Outdoors because we believe the best way to experience nature is together, intentionally, and with people you trust.
         </p>
         <Button variant="outline" asChild>
           <Link to="/about">Our Story</Link>
@@ -163,11 +190,11 @@ const Testimonials = () => (
       <h2 className="heading-lg text-center mb-16">What people say</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {[
-          { text: "I've traveled widely, but nothing has come close to the depth of a Terra trip. You return a different person.", name: "Claire S." },
+          { text: "I've traveled widely, but nothing has come close to the depth of a Found Outdoors trip. You return a different person.", name: "Claire S." },
           { text: "No frills, no gimmicks. Just incredible landscapes, thoughtful guides, and a pace that lets you actually be present.", name: "Marcus W." },
         ].map((t) => (
           <div key={t.name}>
-            <p className="font-serif text-xl md:text-2xl italic leading-relaxed mb-6">"{t.text}"</p>
+            <p className="text-xl md:text-2xl italic leading-relaxed mb-6">"{t.text}"</p>
             <p className="body-sm text-muted-foreground uppercase tracking-widest">{t.name}</p>
           </div>
         ))}
@@ -177,7 +204,7 @@ const Testimonials = () => (
 );
 
 const FinalCTA = () => (
-  <section className="section-padding section-spacing bg-primary text-center">
+  <section className="section-padding section-spacing bg-sky text-center">
     <div className="max-w-2xl mx-auto">
       <h2 className="heading-lg text-primary-foreground mb-6">Ready to go?</h2>
       <p className="body-lg text-primary-foreground/70 mb-10">
@@ -195,6 +222,7 @@ const Index = () => (
     <Hero />
     <Values />
     <FeaturedAdventures />
+    <BikepackingTeaser />
     <Community />
     <UpcomingTrips />
     <AboutTeaser />

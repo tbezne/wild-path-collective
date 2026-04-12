@@ -23,7 +23,7 @@ const Calendar = () => (
               <span className="body-sm text-muted-foreground w-36">{trip.date}</span>
               <Link
                 to={`/adventures/${trip.id}`}
-                className="body-md font-medium flex-1 hover:text-forest transition-colors"
+                className="body-md font-medium flex-1 hover:text-sky-dark transition-colors"
               >
                 {trip.name}
               </Link>

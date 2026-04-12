@@ -4,8 +4,11 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Adventures", href: "/adventures" },
+  { label: "Bikepacking", href: "/bikepacking" },
+  { label: "Custom Experience", href: "/custom-experience" },
   { label: "Calendar", href: "/calendar" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
@@ -23,15 +26,15 @@ const Navbar = () => {
       <div className="section-padding flex items-center justify-between h-16 md:h-20">
         <Link
           to="/"
-          className={`font-serif text-xl md:text-2xl tracking-tight ${
+          className={`font-sans font-bold text-xl md:text-2xl tracking-tight ${
             isTransparent ? "text-primary-foreground" : "text-foreground"
           }`}
         >
-          Terra
+          Found Outdoors
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -48,7 +51,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`md:hidden ${isTransparent ? "text-primary-foreground" : "text-foreground"}`}
+          className={`lg:hidden ${isTransparent ? "text-primary-foreground" : "text-foreground"}`}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -56,7 +59,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background border-t border-border">
+        <div className="lg:hidden bg-background border-t border-border">
           <div className="section-padding py-6 flex flex-col gap-4">
             {navItems.map((item) => (
               <Link

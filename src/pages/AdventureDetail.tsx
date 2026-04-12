@@ -33,7 +33,6 @@ const AdventureDetail = () => {
   return (
     <>
       <Navbar />
-      {/* Hero */}
       <section className="relative h-[60vh] min-h-[400px]">
         <img
           src={adventure.image}
@@ -53,7 +52,6 @@ const AdventureDetail = () => {
         </div>
       </section>
 
-      {/* Info bar */}
       <section className="section-padding py-8 border-b border-border">
         <div className="max-w-4xl mx-auto flex flex-wrap gap-8 md:gap-16">
           {[
@@ -63,7 +61,7 @@ const AdventureDetail = () => {
             { icon: DollarSign, label: "Price", value: `€${adventure.price}` },
           ].map((info) => (
             <div key={info.label} className="flex items-center gap-3">
-              <info.icon size={20} className="text-forest" strokeWidth={1.5} />
+              <info.icon size={20} className="text-sky-dark" strokeWidth={1.5} />
               <div>
                 <p className="body-sm text-muted-foreground">{info.label}</p>
                 <p className="body-md font-medium">{info.value}</p>
@@ -75,14 +73,12 @@ const AdventureDetail = () => {
 
       <main className="section-padding py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
-          {/* Description */}
           <section className="mb-20">
             <p className="body-lg text-foreground leading-relaxed max-w-2xl">
               {adventure.description}
             </p>
           </section>
 
-          {/* Itinerary */}
           <section className="mb-20">
             <h2 className="heading-md mb-8">Itinerary</h2>
             <Accordion type="single" collapsible className="w-full">
@@ -106,14 +102,13 @@ const AdventureDetail = () => {
             </Accordion>
           </section>
 
-          {/* Reviews */}
           {adventure.reviews.length > 0 && (
             <section className="mb-20">
               <h2 className="heading-md mb-8">What past travelers say</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {adventure.reviews.map((r, i) => (
                   <div key={i}>
-                    <p className="font-serif text-lg italic leading-relaxed mb-4">"{r.text}"</p>
+                    <p className="text-lg italic leading-relaxed mb-4">"{r.text}"</p>
                     <p className="body-sm text-muted-foreground uppercase tracking-widest">{r.name}</p>
                   </div>
                 ))}
@@ -121,7 +116,6 @@ const AdventureDetail = () => {
             </section>
           )}
 
-          {/* Booking CTA */}
           <section className="text-center py-12 border-t border-border">
             <h2 className="heading-md mb-4">Join this adventure</h2>
             <p className="body-md text-muted-foreground mb-8">

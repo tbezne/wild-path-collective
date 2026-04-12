@@ -37,7 +37,7 @@ const Adventures = () => {
                 onClick={() => setLocation(l)}
                 className={`body-sm px-4 py-2 border transition-colors ${
                   location === l
-                    ? "bg-primary text-primary-foreground border-primary"
+                    ? "bg-sky text-primary-foreground border-sky"
                     : "border-border text-muted-foreground hover:border-foreground/30"
                 }`}
               >
@@ -51,7 +51,7 @@ const Adventures = () => {
                 onClick={() => setDifficulty(d)}
                 className={`body-sm px-4 py-2 border transition-colors ${
                   difficulty === d
-                    ? "bg-primary text-primary-foreground border-primary"
+                    ? "bg-sky text-primary-foreground border-sky"
                     : "border-border text-muted-foreground hover:border-foreground/30"
                 }`}
               >
@@ -77,7 +77,7 @@ const Adventures = () => {
                 <p className="body-sm text-muted-foreground uppercase tracking-widest mb-1">
                   {a.location} · {a.difficulty}
                 </p>
-                <h3 className="heading-sm mb-2 group-hover:text-forest transition-colors">{a.title}</h3>
+                <h3 className="heading-sm mb-2 group-hover:text-sky-dark transition-colors">{a.title}</h3>
                 <p className="body-sm text-muted-foreground">
                   {a.duration} · Group of {a.groupSize} · From €{a.price}
                 </p>
