@@ -27,12 +27,13 @@ const Calendar = () => (
               >
                 {trip.name}
               </Link>
-              <span className="body-sm text-muted-foreground w-40">{trip.location}</span>
+              <span className="body-sm text-muted-foreground/60 text-xs uppercase tracking-widest w-28">{trip.category}</span>
+              <span className="body-sm text-muted-foreground w-48">{trip.location}</span>
               <span className="body-sm text-muted-foreground w-28">
                 {trip.spotsLeft} spot{trip.spotsLeft !== 1 ? "s" : ""} left
               </span>
-              <Button variant="outline" size="sm" className="w-fit">
-                Reserve
+              <Button variant="outline" size="sm" className="w-fit" asChild>
+                <Link to="/contact">Reserve</Link>
               </Button>
             </div>
           ))}

@@ -1,9 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { adventures } from "@/lib/data";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Clock, Mountain, Users, DollarSign } from "lucide-react";
+import { Clock, Mountain, Users, DollarSign, CalendarDays } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -44,6 +45,9 @@ const AdventureDetail = () => {
         <div className="absolute inset-0 bg-charcoal/40" />
         <div className="relative z-10 h-full flex items-end section-padding pb-12">
           <div>
+            <Badge className="mb-3 bg-background/80 text-foreground border-0 backdrop-blur-sm">
+              {adventure.category}
+            </Badge>
             <p className="body-sm text-primary-foreground/70 uppercase tracking-widest mb-2">
               {adventure.location}
             </p>
@@ -59,6 +63,7 @@ const AdventureDetail = () => {
             { icon: Mountain, label: "Difficulty", value: adventure.difficulty },
             { icon: Users, label: "Group Size", value: `Up to ${adventure.groupSize}` },
             { icon: DollarSign, label: "Price", value: `€${adventure.price}` },
+            ...(adventure.season ? [{ icon: CalendarDays, label: "Season", value: adventure.season }] : []),
           ].map((info) => (
             <div key={info.label} className="flex items-center gap-3">
               <info.icon size={20} className="text-sky-dark" strokeWidth={1.5} />
@@ -78,6 +83,20 @@ const AdventureDetail = () => {
               {adventure.description}
             </p>
           </section>
+
+          {adventure.included && adventure.included.length > 0 && (
+            <section className="mb-20">
+              <h2 className="heading-md mb-8">What's included</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {adventure.included.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="text-wild-pink mt-1">●</span>
+                    <p className="body-md">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="mb-20">
             <h2 className="heading-md mb-8">Itinerary</h2>
