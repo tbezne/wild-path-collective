@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index.tsx";
 import Adventures from "./pages/Adventures.tsx";
 import AdventureDetail from "./pages/AdventureDetail.tsx";
-import Bikepacking from "./pages/Bikepacking.tsx";
+// Bikepacking is now part of adventures
 import CustomExperience from "./pages/CustomExperience.tsx";
 import Calendar from "./pages/Calendar.tsx";
 import About from "./pages/About.tsx";
