@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-mountains.jpg";
 import communityImage from "@/assets/community.jpg";
 import aboutTeamImage from "@/assets/about-team.jpg";
-import bikepackingImage from "@/assets/bikepacking-hero.jpg";
-import { adventures, upcomingTrips } from "@/lib/data";
+import { adventures, categories, upcomingTrips } from "@/lib/data";
 import { Compass, Users, Mountain } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const Hero = () => (
   <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -22,7 +22,7 @@ const Hero = () => (
         Move together. Discover together.
       </h1>
       <p className="body-lg text-primary-foreground/80 mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-        Community-driven adventures in the world's most beautiful landscapes.
+        Climbing, bikepacking, ski touring & hiking — small-group adventures in the world's most beautiful landscapes.
       </p>
       <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
         <Button variant="hero" size="lg" asChild>
@@ -33,8 +33,51 @@ const Hero = () => (
   </section>
 );
 
-const Values = () => (
+const CategoryGrid = () => (
   <section className="section-padding section-spacing">
+    <div className="max-w-5xl mx-auto">
+      <h2 className="heading-lg text-center mb-4">What we do</h2>
+      <p className="body-md text-muted-foreground text-center mb-12 max-w-lg mx-auto">
+        Four ways to explore. All built around small groups, expert guides, and unforgettable places.
+      </p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {categories.map((cat) => {
+          const catAdventures = adventures.filter((a) => a.category === cat.value);
+          const firstImage = catAdventures[0]?.image;
+          return (
+            <Link
+              key={cat.value}
+              to={`/adventures?category=${cat.value}`}
+              className="group relative overflow-hidden aspect-[3/4]"
+            >
+              {firstImage && (
+                <img
+                  src={firstImage}
+                  alt={cat.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  width={600}
+                  height={800}
+                />
+              )}
+              <div className="absolute inset-0 bg-charcoal/40 group-hover:bg-charcoal/30 transition-colors" />
+              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-4">
+                <span className="text-3xl mb-3">{cat.icon}</span>
+                <h3 className="heading-sm text-primary-foreground">{cat.label}</h3>
+                <p className="body-sm text-primary-foreground/60 mt-1">
+                  {catAdventures.length} trip{catAdventures.length !== 1 ? "s" : ""}
+                </p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
+
+const Values = () => (
+  <section className="section-padding py-16 bg-sand-light">
     <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-center">
       {[
         { icon: Users, title: "Small Groups", text: "6–10 people. Real connections, not crowds." },
@@ -51,63 +94,48 @@ const Values = () => (
   </section>
 );
 
-const FeaturedAdventures = () => (
-  <section className="section-padding section-spacing bg-sand-light">
-    <div className="max-w-6xl mx-auto">
-      <h2 className="heading-lg text-center mb-4">Featured Adventures</h2>
-      <p className="body-md text-muted-foreground text-center mb-16 max-w-lg mx-auto">
-        Journeys designed around depth, not distance.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {adventures.map((a) => (
-          <Link key={a.id} to={`/adventures/${a.id}`} className="group">
-            <div className="overflow-hidden mb-5">
-              <img
-                src={a.image}
-                alt={a.title}
-                className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-                width={1200}
-                height={800}
-              />
-            </div>
-            <p className="body-sm text-muted-foreground uppercase tracking-widest mb-1">{a.location}</p>
-            <h3 className="heading-sm mb-2 group-hover:text-sky-dark transition-colors">{a.title}</h3>
-            <p className="body-sm text-muted-foreground">
-              {a.duration} · From €{a.price}
-            </p>
-          </Link>
-        ))}
+const FeaturedAdventures = () => {
+  const featured = adventures.slice(0, 6);
+  return (
+    <section className="section-padding section-spacing">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="heading-lg text-center mb-4">Featured Adventures</h2>
+        <p className="body-md text-muted-foreground text-center mb-16 max-w-lg mx-auto">
+          Journeys designed around depth, not distance.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featured.map((a) => (
+            <Link key={a.id} to={`/adventures/${a.id}`} className="group">
+              <div className="overflow-hidden mb-5 relative">
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  width={1200}
+                  height={800}
+                />
+                <Badge className="absolute top-3 left-3 bg-background/90 text-foreground border-0 text-xs font-normal backdrop-blur-sm">
+                  {a.category}
+                </Badge>
+              </div>
+              <p className="body-sm text-muted-foreground uppercase tracking-widest mb-1">{a.location}</p>
+              <h3 className="heading-sm mb-2 group-hover:text-sky-dark transition-colors">{a.title}</h3>
+              <p className="body-sm text-muted-foreground">
+                {a.duration} · From €{a.price}
+              </p>
+            </Link>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/adventures">View All Adventures</Link>
+          </Button>
+        </div>
       </div>
-    </div>
-  </section>
-);
-
-const BikepackingTeaser = () => (
-  <section className="relative h-[60vh] min-h-[450px] flex items-center overflow-hidden">
-    <img
-      src={bikepackingImage}
-      alt="Bikepacker riding through rolling hills in eastern Slovenia"
-      className="absolute inset-0 w-full h-full object-cover"
-      loading="lazy"
-      width={1920}
-      height={1080}
-    />
-    <div className="absolute inset-0 bg-charcoal/50" />
-    <div className="relative z-10 section-padding max-w-2xl">
-      <p className="body-sm text-primary-foreground/70 uppercase tracking-widest mb-3">New</p>
-      <h2 className="heading-lg text-primary-foreground mb-6">
-        Bikepacking Eastern Slovenia
-      </h2>
-      <p className="body-lg text-primary-foreground/80 mb-8">
-        3 days through vineyards, hills, and hidden villages. Our first bikepacking adventure.
-      </p>
-      <Button variant="hero" size="lg" asChild>
-        <Link to="/bikepacking">Learn More</Link>
-      </Button>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Community = () => (
   <section className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden">
@@ -144,7 +172,7 @@ const UpcomingTrips = () => (
           >
             <span className="body-sm text-muted-foreground w-36">{trip.date}</span>
             <span className="body-md font-medium flex-1 group-hover:text-sky-dark transition-colors">{trip.name}</span>
-            <span className="body-sm text-muted-foreground w-40">{trip.location}</span>
+            <span className="body-sm text-muted-foreground w-48">{trip.location}</span>
             <span className="body-sm text-muted-foreground w-28 text-right">
               {trip.spotsLeft} spot{trip.spotsLeft !== 1 ? "s" : ""} left
             </span>
@@ -220,9 +248,9 @@ const FinalCTA = () => (
 const Index = () => (
   <>
     <Hero />
+    <CategoryGrid />
     <Values />
     <FeaturedAdventures />
-    <BikepackingTeaser />
     <Community />
     <UpcomingTrips />
     <AboutTeaser />

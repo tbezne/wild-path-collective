@@ -36,7 +36,7 @@ const App = () => (
           />
           <Route path="/adventures" element={<Adventures />} />
           <Route path="/adventures/:id" element={<AdventureDetail />} />
-          <Route path="/bikepacking" element={<Bikepacking />} />
+          {/* Bikepacking is now part of adventures */}
           <Route path="/custom-experience" element={<CustomExperience />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/about" element={<About />} />
