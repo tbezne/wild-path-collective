@@ -14,7 +14,6 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["'Playfair Display'", "Georgia", "serif"],
         sans: ["'DM Sans'", "system-ui", "sans-serif"],
       },
       colors: {
@@ -51,13 +50,22 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sky: {
+          DEFAULT: "hsl(var(--sky))",
+          light: "hsl(var(--sky-light))",
+          dark: "hsl(var(--sky-dark))",
+        },
         sand: {
           DEFAULT: "hsl(var(--sand))",
           light: "hsl(var(--sand-light))",
         },
-        forest: {
-          DEFAULT: "hsl(var(--forest))",
-          light: "hsl(var(--forest-light))",
+        "deep-red": {
+          DEFAULT: "hsl(var(--deep-red))",
+          light: "hsl(var(--deep-red-light))",
+        },
+        "wild-pink": {
+          DEFAULT: "hsl(var(--wild-pink))",
+          light: "hsl(var(--wild-pink-light))",
         },
         charcoal: {
           DEFAULT: "hsl(var(--charcoal))",

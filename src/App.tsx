@@ -8,8 +8,11 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index.tsx";
 import Adventures from "./pages/Adventures.tsx";
 import AdventureDetail from "./pages/AdventureDetail.tsx";
+import Bikepacking from "./pages/Bikepacking.tsx";
+import CustomExperience from "./pages/CustomExperience.tsx";
 import Calendar from "./pages/Calendar.tsx";
 import About from "./pages/About.tsx";
+import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -33,8 +36,11 @@ const App = () => (
           />
           <Route path="/adventures" element={<Adventures />} />
           <Route path="/adventures/:id" element={<AdventureDetail />} />
+          <Route path="/bikepacking" element={<Bikepacking />} />
+          <Route path="/custom-experience" element={<CustomExperience />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
