@@ -53,10 +53,8 @@ const Logo = ({ variant = "full", theme = "dark", className }: LogoProps) => {
       <div className="h-9 w-9 md:h-10 md:w-10 shrink-0">
         <LogoSquare />
       </div>
-      <span className={cn("font-sans font-bold text-xl md:text-2xl leading-none tracking-tight", textColor)}>
-        Found
-        <br className="hidden sm:inline" />
-        <span className="sm:ml-0 ml-1">Outdoors</span>
+      <span className={cn("font-sans font-extrabold text-lg md:text-xl leading-none tracking-tight", textColor)}>
+        Found Outdoors
       </span>
     </div>
   );
