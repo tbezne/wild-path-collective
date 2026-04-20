@@ -14,7 +14,7 @@ const Footer = () => (
           <h4 className="body-sm uppercase tracking-widest mb-4 opacity-50">Explore</h4>
           <div className="flex flex-col gap-2">
             <Link to="/adventures" className="body-sm opacity-70 hover:opacity-100 transition-opacity">Adventures</Link>
-            <Link to="/bikepacking" className="body-sm opacity-70 hover:opacity-100 transition-opacity">Bikepacking</Link>
+            <Link to="/unfamiliar-places" className="body-sm opacity-70 hover:opacity-100 transition-opacity">Unfamiliar Places</Link>
             <Link to="/custom-experience" className="body-sm opacity-70 hover:opacity-100 transition-opacity">Custom Experience</Link>
           </div>
         </div>
