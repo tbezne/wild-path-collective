@@ -52,6 +52,11 @@ const AdventureDetail = () => {
               {adventure.location}
             </p>
             <h1 className="heading-xl text-primary-foreground">{adventure.title}</h1>
+            {adventure.tagline && (
+              <p className="body-lg text-primary-foreground/85 mt-3 max-w-2xl">
+                {adventure.tagline}
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -83,6 +88,43 @@ const AdventureDetail = () => {
               {adventure.description}
             </p>
           </section>
+
+          {adventure.forWhom && (
+            <section className="mb-20 max-w-2xl">
+              <p className="body-sm text-muted-foreground uppercase tracking-widest mb-4">
+                Who it's for
+              </p>
+              <p className="body-lg text-foreground leading-relaxed">
+                {adventure.forWhom}
+              </p>
+            </section>
+          )}
+
+          {adventure.accommodation && adventure.accommodation.length > 0 && (
+            <section className="mb-20">
+              <h2 className="heading-md mb-8">Where you'll sleep</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {adventure.accommodation.map((opt) => (
+                  <div key={opt.title}>
+                    {opt.image && (
+                      <div className="aspect-[4/3] overflow-hidden mb-4">
+                        <img
+                          src={opt.image}
+                          alt={opt.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <h3 className="body-md font-medium mb-2">{opt.title}</h3>
+                    <p className="body-md text-muted-foreground leading-relaxed">
+                      {opt.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {adventure.included && adventure.included.length > 0 && (
             <section className="mb-20">
@@ -135,13 +177,46 @@ const AdventureDetail = () => {
             </section>
           )}
 
+          {adventure.gallery && adventure.gallery.length > 0 && (
+            <section className="mb-20">
+              <h2 className="heading-md mb-8">Moments</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {adventure.gallery.map((img) => (
+                  <div key={img.src} className="aspect-[4/5] overflow-hidden">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section className="text-center py-12 border-t border-border">
             <h2 className="heading-md mb-4">Join this adventure</h2>
-            <p className="body-md text-muted-foreground mb-8">
-              Check the calendar for upcoming dates and available spots.
-            </p>
+            {adventure.departures && adventure.departures.length > 0 ? (
+              <>
+                <p className="body-sm text-muted-foreground uppercase tracking-widest mb-3">
+                  Upcoming departures
+                </p>
+                <div className="flex flex-wrap justify-center gap-3 mb-8">
+                  {adventure.departures.map((d) => (
+                    <Badge key={d} variant="outline" className="text-base py-2 px-4 font-normal">
+                      {d}
+                    </Badge>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="body-md text-muted-foreground mb-8">
+                Check the calendar for upcoming dates and available spots.
+              </p>
+            )}
             <Button variant="default" size="lg" asChild>
-              <Link to="/calendar">View Dates & Book</Link>
+              <Link to="/contact">Reserve your spot</Link>
             </Button>
           </section>
         </div>

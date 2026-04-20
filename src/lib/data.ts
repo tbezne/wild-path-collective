@@ -2,6 +2,8 @@ import adventure1 from "@/assets/adventure-1.jpg";
 import adventure2 from "@/assets/adventure-2.jpg";
 import adventure3 from "@/assets/adventure-3.jpg";
 import bikepackingImg from "@/assets/bikepacking-hero.jpg";
+import bikepackingDinner from "@/assets/bikepacking-dinner.jpg";
+import bikepackingTent from "@/assets/bikepacking-tent.jpg";
 import climbingTriglav from "@/assets/climbing-triglav.jpg";
 import mangartSunrise from "@/assets/mangart-sunrise.jpg";
 import skiTouring from "@/assets/ski-touring.jpg";
@@ -20,8 +22,13 @@ export interface Adventure {
   image: string;
   category: AdventureCategory;
   season?: string;
+  tagline?: string;
+  forWhom?: string;
   description: string;
   included?: string[];
+  accommodation?: { title: string; description: string; image?: string }[];
+  gallery?: { src: string; alt: string }[];
+  departures?: string[];
   itinerary: { day: string; title: string; description: string }[];
   reviews: { name: string; text: string; rating: number }[];
 }
@@ -80,8 +87,31 @@ export const adventures: Adventure[] = [
     image: bikepackingImg,
     category: "Bikepacking",
     season: "Apr – Oct",
+    tagline: "An introduction to bikepacking",
+    forWhom:
+      "Made for anyone curious about bikepacking but unsure where to start. No experience needed — just a basic comfort on a bike and a willingness to spend three slow days outside. We handle the route, the gear, the logistics. You learn by riding.",
     description:
       "Three days on gravel roads and forest trails through one of Europe's most underrated landscapes. Eastern Slovenia is a world of rolling vine-covered hills, thermal springs, and villages where time moves differently. This is bikepacking at its most peaceful — no racing, no suffering, just riding and connecting.",
+    departures: ["28 – 30 August 2026"],
+    accommodation: [
+      {
+        title: "Farmhouse rooms",
+        description:
+          "Comfortable beds in renovated farmhouses and small family-run gostilnas. Hot showers, home-cooked breakfast, and a glass of local wine waiting at the end of each day.",
+        image: bikepackingDinner,
+      },
+      {
+        title: "Sleep under the stars",
+        description:
+          "Prefer canvas to comforters? Choose the tent option and we'll pitch camp in a vineyard meadow. Same shared dinners, same warm welcome — just a quieter morning with mist on the hills.",
+        image: bikepackingTent,
+      },
+    ],
+    gallery: [
+      { src: bikepackingDinner, alt: "Shared dinner at a long table in a Slovenian vineyard at golden hour" },
+      { src: bikepackingTent, alt: "Canvas tent pitched beside a vineyard at dawn" },
+      { src: bikepackingImg, alt: "Gravel cyclist riding through vine-covered hills" },
+    ],
     included: [
       "Gravel bike rental (Bombtrack Beyond)",
       "All accommodation (2 nights)",
