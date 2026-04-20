@@ -36,9 +36,9 @@ const Hero = () => (
 const CategoryGrid = () => (
   <section className="section-padding section-spacing">
     <div className="max-w-5xl mx-auto">
-      <h2 className="heading-lg text-center mb-4">What we do</h2>
-      <p className="body-md text-muted-foreground text-center mb-12 max-w-lg mx-auto">
-        Four ways to explore. All built around small groups, expert guides, and unforgettable places.
+      <h2 className="heading-lg text-center mb-4">Fully supported across Slovenia.</h2>
+      <p className="body-md text-muted-foreground text-center mb-12 max-w-xl mx-auto">
+        Climbing, bikepacking, ski touring, and multi-day hiking — guided end-to-end. Bikes, gear, huts, transfers, and a leader who knows the ground.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {categories.map((cat) => {
@@ -231,6 +231,21 @@ const Testimonials = () => (
   </section>
 );
 
+const UnfamiliarTeaser = () => (
+  <section className="section-padding section-spacing bg-sand-light text-center">
+    <div className="max-w-2xl mx-auto">
+      <p className="body-sm text-muted-foreground uppercase tracking-widest mb-4">A series · Four times a year</p>
+      <h2 className="heading-lg mb-6">Unfamiliar Places.</h2>
+      <p className="body-lg text-muted-foreground mb-10">
+        Once a season we go somewhere new — climbing, bikepacking, ski touring, or hiking. Join the list to hear about the next one.
+      </p>
+      <Button variant="outline" size="lg" asChild>
+        <Link to="/unfamiliar-places">Learn More</Link>
+      </Button>
+    </div>
+  </section>
+);
+
 const FinalCTA = () => (
   <section className="section-padding section-spacing bg-sky text-center">
     <div className="max-w-2xl mx-auto">
@@ -255,6 +270,7 @@ const Index = () => (
     <UpcomingTrips />
     <AboutTeaser />
     <Testimonials />
+    <UnfamiliarTeaser />
     <FinalCTA />
   </>
 );
