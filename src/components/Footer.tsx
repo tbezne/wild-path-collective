@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import Logo from "@/components/Logo";
 
 const Footer = () => (
   <footer className="bg-charcoal text-primary-foreground">
     <div className="section-padding py-16 md:py-20">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
-          <h3 className="font-sans font-bold text-2xl mb-4">Found Outdoors</h3>
+          <Logo theme="light" className="mb-6" />
           <p className="body-sm opacity-70 max-w-xs">
             Community-driven outdoor adventures. Move together, discover together.
           </p>

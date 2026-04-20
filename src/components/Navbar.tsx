@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const navItems = [
   { label: "Adventures", href: "/adventures" },
@@ -24,13 +25,8 @@ const Navbar = () => {
       }`}
     >
       <div className="section-padding flex items-center justify-between h-16 md:h-20">
-        <Link
-          to="/"
-          className={`font-sans font-bold text-xl md:text-2xl tracking-tight ${
-            isTransparent ? "text-primary-foreground" : "text-foreground"
-          }`}
-        >
-          Found Outdoors
+        <Link to="/" aria-label="Found Outdoors home">
+          <Logo theme={isTransparent ? "light" : "dark"} />
         </Link>
 
         {/* Desktop */}
