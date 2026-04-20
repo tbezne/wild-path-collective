@@ -13,6 +13,7 @@ import CustomExperience from "./pages/CustomExperience.tsx";
 import Calendar from "./pages/Calendar.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
+import UnfamiliarPlaces from "./pages/UnfamiliarPlaces.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/adventures/:id" element={<AdventureDetail />} />
           {/* Bikepacking is now part of adventures */}
           <Route path="/custom-experience" element={<CustomExperience />} />
+          <Route path="/unfamiliar-places" element={<UnfamiliarPlaces />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
