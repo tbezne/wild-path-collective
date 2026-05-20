@@ -47,7 +47,7 @@ const CategoryGrid = () => (
           return (
             <Link
               key={cat.value}
-              to={`/adventures?category=${cat.value}`}
+              to={`/adventures/category/${cat.value.toLowerCase().replace(" ", "-")}`}
               className="group relative overflow-hidden aspect-[3/4]"
             >
               {firstImage && (
