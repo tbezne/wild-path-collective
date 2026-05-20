@@ -14,9 +14,14 @@ const navItems = [
 
 const Navbar = () => {
   const location = useLocation();
-  const [open, setOpen] = useState(false);
-  const isHome = location.pathname === "/";
-  const isTransparent = isHome;
+  const [scrolled, setScrolled] = useState(false);
+  // Editorial navbar: always on warm canvas, subtle border once scrolled.
+  const isTransparent = false;
+
+  // Track scroll for the subtle bottom border
+  if (typeof window !== "undefined") {
+    window.onscroll = () => setScrolled(window.scrollY > 12);
+  }
 
   return (
     <nav
