@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,59 +6,66 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 10% 20%;
+    /* Warm off-white canvas, deep forest ink */
+    --background: 40 38% 98%;
+    --foreground: 108 22% 22%;
 
-    --card: 40 15% 96%;
-    --card-foreground: 220 10% 20%;
+    --card: 40 30% 96%;
+    --card-foreground: 108 22% 22%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 10% 20%;
+    --popover: 40 38% 98%;
+    --popover-foreground: 108 22% 22%;
 
-    --primary: 200 52% 72%;
-    --primary-foreground: 0 0% 100%;
+    /* Terracotta primary */
+    --primary: 13 50% 53%;
+    --primary-foreground: 40 38% 98%;
 
-    --secondary: 40 25% 88%;
-    --secondary-foreground: 220 10% 20%;
+    /* Peach secondary */
+    --secondary: 23 71% 80%;
+    --secondary-foreground: 108 22% 22%;
 
-    --muted: 40 15% 94%;
-    --muted-foreground: 220 5% 50%;
+    --muted: 40 25% 93%;
+    --muted-foreground: 108 12% 40%;
 
-    --accent: 340 70% 55%;
-    --accent-foreground: 0 0% 100%;
+    /* Sage accent */
+    --accent: 108 21% 56%;
+    --accent-foreground: 40 38% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 38% 98%;
 
-    --border: 40 12% 88%;
-    --input: 40 12% 88%;
-    --ring: 200 52% 72%;
+    --border: 108 12% 86%;
+    --input: 108 12% 86%;
+    --ring: 13 50% 53%;
 
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
-    --sky: 200 52% 72%;
-    --sky-light: 200 52% 82%;
-    --sky-dark: 200 52% 55%;
-    --sand: 40 25% 88%;
-    --sand-light: 40 20% 94%;
-    --deep-red: 338 60% 30%;
-    --deep-red-light: 338 45% 40%;
-    --wild-pink: 340 70% 55%;
-    --wild-pink-light: 340 60% 70%;
-    --charcoal: 220 10% 20%;
-    --charcoal-light: 220 5% 40%;
-    --cream: 40 20% 97%;
+    /* Legacy semantic aliases — remapped to the new palette so existing
+       components keep working. */
+    --sky: 108 22% 28%;        /* deep forest (used for logo plate, dark CTA) */
+    --sky-light: 108 21% 56%;  /* sage */
+    --sky-dark: 13 50% 45%;    /* deep terracotta */
+    --sand: 23 71% 80%;        /* peach */
+    --sand-light: 23 50% 94%;  /* warm wash */
+    --deep-red: 108 22% 22%;   /* deep forest */
+    --deep-red-light: 108 22% 33%;
+    --wild-pink: 13 50% 53%;   /* terracotta */
+    --wild-pink-light: 23 71% 70%;
+    --charcoal: 108 22% 18%;
+    --charcoal-light: 108 12% 40%;
+    --cream: 40 38% 96%;
 
-    --font-sans: 'Manrope', system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-display: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 40 38% 98%;
+    --sidebar-foreground: 108 22% 22%;
+    --sidebar-primary: 13 50% 53%;
+    --sidebar-primary-foreground: 40 38% 98%;
+    --sidebar-accent: 40 25% 93%;
+    --sidebar-accent-foreground: 108 22% 22%;
+    --sidebar-border: 108 12% 86%;
+    --sidebar-ring: 13 50% 53%;
   }
 }
 
@@ -72,8 +79,13 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
-    @apply font-bold;
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--secondary));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -83,27 +95,31 @@
   }
 
   .section-spacing {
-    @apply py-20 md:py-28 lg:py-36;
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
   }
 
   .heading-xl {
-    font-family: var(--font-sans);
-    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight;
+    font-family: var(--font-display);
+    @apply text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold leading-[0.85] tracking-tight uppercase;
   }
 
   .heading-lg {
-    font-family: var(--font-sans);
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+    font-family: var(--font-display);
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tight;
   }
 
   .heading-md {
-    font-family: var(--font-sans);
-    @apply text-2xl md:text-3xl font-bold leading-snug;
+    font-family: var(--font-display);
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
   }
 
   .heading-sm {
-    font-family: var(--font-sans);
-    @apply text-xl md:text-2xl font-semibold leading-snug;
+    font-family: var(--font-display);
+    @apply text-xl md:text-2xl font-bold leading-snug;
   }
 
   .body-lg {
@@ -120,5 +136,10 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.3em] font-semibold text-primary;
+    font-family: var(--font-display);
   }
 }
