@@ -17,7 +17,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   // Editorial navbar: always on warm canvas.
   const isTransparent = false;
-  void scrolledUnused;
+  
 
   return (
     <nav
