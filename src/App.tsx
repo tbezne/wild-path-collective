@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index.tsx";
 import Adventures from "./pages/Adventures.tsx";
 import AdventureDetail from "./pages/AdventureDetail.tsx";
+import CategoryPage from "./pages/CategoryPage.tsx";
 // Bikepacking is now part of adventures
 import CustomExperience from "./pages/CustomExperience.tsx";
 import Calendar from "./pages/Calendar.tsx";
@@ -36,6 +37,7 @@ const App = () => (
             }
           />
           <Route path="/adventures" element={<Adventures />} />
+          <Route path="/adventures/category/:slug" element={<CategoryPage />} />
           <Route path="/adventures/:id" element={<AdventureDetail />} />
           {/* Bikepacking is now part of adventures */}
           <Route path="/custom-experience" element={<CustomExperience />} />
