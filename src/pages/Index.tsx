@@ -4,226 +4,282 @@ import heroImage from "@/assets/hero-mountains.jpg";
 import communityImage from "@/assets/community.jpg";
 import aboutTeamImage from "@/assets/about-team.jpg";
 import { adventures, categories, upcomingTrips } from "@/lib/data";
-import { Compass, Users, Mountain } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight } from "lucide-react";
 
+/* ---------- Hero — asymmetric, editorial ---------- */
 const Hero = () => (
-  <section className="relative h-screen flex items-center justify-center overflow-hidden">
-    <img
-      src={heroImage}
-      alt="Hikers walking through a misty mountain valley at golden hour"
-      className="absolute inset-0 w-full h-full object-cover"
-      width={1920}
-      height={1080}
-    />
-    <div className="absolute inset-0 bg-charcoal/40" />
-    <div className="relative z-10 text-center section-padding max-w-3xl mx-auto">
-      <h1 className="heading-xl text-primary-foreground mb-6 animate-fade-in">
-        Move together. Discover together.
-      </h1>
-      <p className="body-lg text-primary-foreground/80 mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-        Climbing, bikepacking, ski touring & hiking — small-group adventures in the world's most beautiful landscapes.
-      </p>
-      <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
-        <Button variant="hero" size="lg" asChild>
-          <Link to="/adventures">View Adventures</Link>
-        </Button>
-      </div>
-    </div>
-  </section>
-);
-
-const CategoryGrid = () => (
-  <section className="section-padding section-spacing">
-    <div className="max-w-5xl mx-auto">
-      <h2 className="heading-lg text-center mb-4">Fully supported across Slovenia.</h2>
-      <p className="body-md text-muted-foreground text-center mb-12 max-w-xl mx-auto">
-        Climbing, bikepacking, ski touring, and multi-day hiking — guided end-to-end. Bikes, gear, huts, transfers, and a leader who knows the ground.
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {categories.map((cat) => {
-          const catAdventures = adventures.filter((a) => a.category === cat.value);
-          const firstImage = catAdventures[0]?.image;
-          return (
-            <Link
-              key={cat.value}
-              to={`/adventures/category/${cat.value.toLowerCase().replace(" ", "-")}`}
-              className="group relative overflow-hidden aspect-[3/4]"
-            >
-              {firstImage && (
-                <img
-                  src={firstImage}
-                  alt={cat.label}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  width={600}
-                  height={800}
-                />
-              )}
-              <div className="absolute inset-0 bg-charcoal/40 group-hover:bg-charcoal/30 transition-colors" />
-              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-4">
-                <span className="text-3xl mb-3">{cat.icon}</span>
-                <h3 className="heading-sm text-primary-foreground">{cat.label}</h3>
-                <p className="body-sm text-primary-foreground/60 mt-1">
-                  {catAdventures.length} trip{catAdventures.length !== 1 ? "s" : ""}
-                </p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-);
-
-const Values = () => (
-  <section className="section-padding py-16 bg-sand-light">
-    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-center">
-      {[
-        { icon: Users, title: "Small Groups", text: "6–10 people. Real connections, not crowds." },
-        { icon: Compass, title: "Curated Routes", text: "Every trail chosen for beauty, challenge, and solitude." },
-        { icon: Mountain, title: "Expert Guides", text: "People who know the land and love sharing it." },
-      ].map((v) => (
-        <div key={v.title} className="flex flex-col items-center gap-4">
-          <v.icon className="text-sky-dark" size={28} strokeWidth={1.5} />
-          <h3 className="heading-sm">{v.title}</h3>
-          <p className="body-md text-muted-foreground max-w-xs">{v.text}</p>
+  <section className="relative pt-32 md:pt-40 pb-20 md:pb-32 overflow-hidden">
+    <div className="section-padding max-w-7xl mx-auto">
+      <div className="relative grid grid-cols-12 gap-6 lg:gap-8">
+        <div className="col-span-12 lg:col-span-9 z-10">
+          <p className="eyebrow mb-6 md:mb-10">Found Outdoors — Est. Slovenia</p>
+          <h1 className="font-display text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem] leading-[0.85] tracking-tight uppercase text-primary font-extrabold">
+            Move
+            <br />
+            <span className="block ml-[8%] lg:ml-[14%] text-foreground">together.</span>
+          </h1>
+          <div className="mt-10 lg:mt-14 ml-[10%] lg:ml-[25%] max-w-md">
+            <p className="body-lg text-foreground/80 mb-8">
+              Small-group boutique adventures in the world's most beautiful landscapes.
+              Expert-led climbing, bikepacking, ski touring &amp; multi-day hiking through Slovenia.
+            </p>
+            <div className="flex items-center gap-6 flex-wrap">
+              <Button variant="default" size="lg" asChild>
+                <Link to="/adventures">View Adventures</Link>
+              </Button>
+              <span className="eyebrow text-accent">Four seasons · one country</span>
+            </div>
+          </div>
         </div>
-      ))}
+
+        {/* Asymmetric image with peach offset block */}
+        <div className="col-span-12 lg:col-span-4 lg:absolute lg:top-0 lg:right-0 lg:w-[32%] mt-10 lg:mt-4">
+          <div className="relative">
+            <img
+              src={heroImage}
+              alt="Hikers walking through a misty Slovenian mountain valley at golden hour"
+              className="w-full aspect-[4/5] object-cover shadow-2xl relative z-0"
+              width={800}
+              height={1000}
+            />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary -z-10" />
+            <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent -z-10" />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 );
 
-const FeaturedAdventures = () => {
-  const featured = adventures.slice(0, 6);
+/* ---------- Categories — asymmetric staggered grid ---------- */
+const CategoryGrid = () => {
+  const counts: Record<string, number> = {};
+  for (const a of adventures) counts[a.category] = (counts[a.category] || 0) + 1;
+  // staggered offsets, mirroring the prototype
+  const offsets = ["", "mt-0 md:mt-12", "mt-4", "mt-0 md:mt-20"];
+  const swatches = ["bg-secondary", "bg-accent", "bg-primary", "bg-[hsl(var(--sky))]"];
+
   return (
     <section className="section-padding section-spacing">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="heading-lg text-center mb-4">Featured Adventures</h2>
-        <p className="body-md text-muted-foreground text-center mb-16 max-w-lg mx-auto">
-          Journeys designed around depth, not distance.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featured.map((a) => (
-            <Link key={a.id} to={`/adventures/${a.id}`} className="group">
-              <div className="overflow-hidden mb-5 relative">
-                <img
-                  src={a.image}
-                  alt={a.title}
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  width={1200}
-                  height={800}
-                />
-                <Badge className="absolute top-3 left-3 bg-background/90 text-foreground border-0 text-xs font-normal backdrop-blur-sm">
-                  {a.category}
-                </Badge>
-              </div>
-              <p className="body-sm text-muted-foreground uppercase tracking-widest mb-1">{a.location}</p>
-              <h3 className="heading-sm mb-2 group-hover:text-sky-dark transition-colors">{a.title}</h3>
-              <p className="body-sm text-muted-foreground">
-                {a.duration} · From €{a.price}
-              </p>
-            </Link>
-          ))}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+        <div className="lg:col-span-4">
+          <p className="eyebrow mb-6">The disciplines</p>
+          <h2 className="heading-lg text-primary mb-6">
+            Fully supported<br />across Slovenia.
+          </h2>
+          <p className="body-md text-foreground/70 max-w-sm">
+            From gear to mountain huts, we handle the logistics so you can focus on the
+            climb, the ride, the line. Every trail is chosen for its character and solitude.
+          </p>
         </div>
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg" asChild>
-            <Link to="/adventures">View All Adventures</Link>
-          </Button>
+
+        <div className="lg:col-span-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            {categories.map((cat, i) => {
+              const slug = cat.value.toLowerCase().replace(" ", "-");
+              const firstImage = adventures.find((a) => a.category === cat.value)?.image;
+              const n = counts[cat.value] || 0;
+              return (
+                <Link
+                  key={cat.value}
+                  to={`/adventures/category/${slug}`}
+                  className={`group block ${offsets[i % offsets.length]}`}
+                >
+                  <div className={`aspect-[3/4] overflow-hidden mb-4 ${swatches[i % swatches.length]}`}>
+                    {firstImage && (
+                      <img
+                        src={firstImage}
+                        alt={cat.label}
+                        loading="lazy"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                        width={300}
+                        height={400}
+                      />
+                    )}
+                  </div>
+                  <div className="flex justify-between items-baseline">
+                    <h3 className="font-display text-lg md:text-xl font-bold">{cat.label}</h3>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">
+                      {String(n).padStart(2, "0")}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-const Community = () => (
-  <section className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden">
-    <img
-      src={communityImage}
-      alt="Friends gathered around a campfire in the forest at dusk"
-      className="absolute inset-0 w-full h-full object-cover"
-      loading="lazy"
-      width={1920}
-      height={900}
-    />
-    <div className="absolute inset-0 bg-charcoal/50" />
-    <div className="relative z-10 section-padding max-w-2xl">
-      <h2 className="heading-lg text-primary-foreground mb-6">
-        The people make the place.
-      </h2>
-      <p className="body-lg text-primary-foreground/80">
-        Every trip starts as a group of strangers. Every trip ends with stories you'll carry for years.
-      </p>
+/* ---------- Featured Adventures — editorial cards ---------- */
+const FeaturedAdventures = () => {
+  const featured = adventures.slice(0, 6);
+  return (
+    <section className="section-padding pb-24">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div>
+            <p className="eyebrow mb-4">Featured Journeys</p>
+            <h2 className="heading-lg max-w-xl">Designed around depth, not distance.</h2>
+          </div>
+          <Link
+            to="/adventures"
+            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:gap-3 transition-all"
+          >
+            View all <ArrowUpRight size={16} />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
+          {featured.map((a, i) => (
+            <Link
+              key={a.id}
+              to={`/adventures/${a.id}`}
+              className={`group block ${i % 2 === 1 ? "md:mt-12" : ""}`}
+            >
+              <div className="overflow-hidden mb-5 aspect-[4/5]">
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={800}
+                  height={1000}
+                />
+              </div>
+              <p className="eyebrow text-foreground/50 mb-2">
+                {a.category} · {a.location}
+              </p>
+              <h3 className="heading-sm mb-2 group-hover:text-primary transition-colors">
+                {a.title}
+              </h3>
+              <p className="body-sm text-foreground/60">
+                {a.duration} · From €{a.price}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ---------- Ethos quote — forest block, overlap rule ---------- */
+const Ethos = () => (
+  <section className="section-padding py-24 md:py-32 relative">
+    <div className="max-w-7xl mx-auto relative">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-px bg-primary/20 -z-10" />
+      <div
+        className="ml-auto max-w-4xl p-10 md:p-16 lg:p-24 text-primary-foreground"
+        style={{ background: "hsl(var(--sky))" }}
+      >
+        <span className="font-display text-xs uppercase tracking-[0.4em] text-secondary block mb-8">
+          The ethos
+        </span>
+        <blockquote className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.05] mb-10 font-bold">
+          "The people make the place. Every trip starts as a group of strangers and ends
+          with stories you'll carry for years."
+        </blockquote>
+        <div className="h-12 w-px bg-secondary mb-4" />
+        <p className="font-bold uppercase tracking-widest text-xs">Slovenian Alps · Since 2018</p>
+      </div>
     </div>
   </section>
 );
 
+/* ---------- Upcoming departures ---------- */
 const UpcomingTrips = () => (
   <section className="section-padding section-spacing">
-    <div className="max-w-4xl mx-auto">
-      <h2 className="heading-lg text-center mb-16">Upcoming Departures</h2>
+    <div className="max-w-5xl mx-auto">
+      <div className="flex items-baseline gap-6 mb-12">
+        <h2 className="heading-md">Upcoming departures</h2>
+        <div className="flex-grow h-px bg-border" />
+        <Link to="/calendar" className="eyebrow text-primary hover:text-foreground">
+          Full calendar →
+        </Link>
+      </div>
       <div className="divide-y divide-border">
         {upcomingTrips.slice(0, 5).map((trip, i) => (
           <Link
             key={i}
             to={`/adventures/${trip.id}`}
-            className="flex flex-col md:flex-row md:items-center justify-between py-5 gap-2 md:gap-0 group"
+            className="grid grid-cols-12 items-baseline py-6 gap-4 group"
           >
-            <span className="body-sm text-muted-foreground w-36">{trip.date}</span>
-            <span className="body-md font-medium flex-1 group-hover:text-sky-dark transition-colors">{trip.name}</span>
-            <span className="body-sm text-muted-foreground w-48">{trip.location}</span>
-            <span className="body-sm text-muted-foreground w-28 text-right">
+            <span className="col-span-12 md:col-span-2 body-sm text-foreground/50 uppercase tracking-widest">
+              {trip.date}
+            </span>
+            <span className="col-span-12 md:col-span-5 font-display text-xl md:text-2xl font-bold group-hover:text-primary transition-colors">
+              {trip.name}
+            </span>
+            <span className="col-span-6 md:col-span-3 body-sm text-foreground/60">
+              {trip.location}
+            </span>
+            <span className="col-span-6 md:col-span-2 body-sm text-primary text-right">
               {trip.spotsLeft} spot{trip.spotsLeft !== 1 ? "s" : ""} left
             </span>
           </Link>
         ))}
       </div>
-      <div className="text-center mt-12">
-        <Button variant="outline" size="lg" asChild>
-          <Link to="/calendar">View Full Calendar</Link>
-        </Button>
-      </div>
     </div>
   </section>
 );
 
+/* ---------- About teaser — asymmetric ---------- */
 const AboutTeaser = () => (
-  <section className="section-padding section-spacing bg-sand-light">
-    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <img
-        src={aboutTeamImage}
-        alt="Outdoor guide portrait"
-        className="w-full aspect-square object-cover"
-        loading="lazy"
-        width={800}
-        height={800}
-      />
-      <div>
-        <h2 className="heading-lg mb-6">Built by people who live outdoors.</h2>
-        <p className="body-lg text-muted-foreground mb-8">
-          We started Found Outdoors because we believe the best way to experience nature is together, intentionally, and with people you trust.
+  <section className="section-padding section-spacing">
+    <div className="max-w-7xl mx-auto grid grid-cols-12 gap-8 items-center">
+      <div className="col-span-12 md:col-span-5 relative">
+        <img
+          src={aboutTeamImage}
+          alt="Outdoor guide portrait"
+          loading="lazy"
+          className="w-full aspect-[4/5] object-cover"
+          width={800}
+          height={1000}
+        />
+        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent -z-10 hidden md:block" />
+      </div>
+      <div className="col-span-12 md:col-span-6 md:col-start-7">
+        <p className="eyebrow mb-4">Our story</p>
+        <h2 className="heading-lg mb-6">
+          Built by people who<br />
+          <span className="text-primary italic">live outdoors.</span>
+        </h2>
+        <p className="body-lg text-foreground/70 mb-8 max-w-md">
+          We started Found Outdoors because we believe the best way to experience nature is
+          together — intentionally, and with people you trust.
         </p>
         <Button variant="outline" asChild>
-          <Link to="/about">Our Story</Link>
+          <Link to="/about">Read our story</Link>
         </Button>
       </div>
     </div>
   </section>
 );
 
+/* ---------- Testimonials ---------- */
 const Testimonials = () => (
-  <section className="section-padding section-spacing">
-    <div className="max-w-4xl mx-auto">
-      <h2 className="heading-lg text-center mb-16">What people say</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+  <section className="section-padding py-24 md:py-32 bg-[hsl(var(--cream))]">
+    <div className="max-w-6xl mx-auto">
+      <p className="eyebrow mb-12 text-center">Guest reflections</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
         {[
-          { text: "I've traveled widely, but nothing has come close to the depth of a Found Outdoors trip. You return a different person.", name: "Claire S." },
-          { text: "No frills, no gimmicks. Just incredible landscapes, thoughtful guides, and a pace that lets you actually be present.", name: "Marcus W." },
-        ].map((t) => (
-          <div key={t.name}>
-            <p className="text-xl md:text-2xl italic leading-relaxed mb-6">"{t.text}"</p>
-            <p className="body-sm text-muted-foreground uppercase tracking-widest">{t.name}</p>
+          {
+            text: "I've traveled widely, but nothing has come close to the depth of a Found Outdoors trip. You return a different person.",
+            name: "Claire S.",
+          },
+          {
+            text: "No frills, no gimmicks. Just incredible landscapes, thoughtful guides, and a pace that lets you actually be present.",
+            name: "Marcus W.",
+          },
+        ].map((t, i) => (
+          <div key={t.name} className={i === 1 ? "md:mt-16" : ""}>
+            <p className="font-display text-2xl md:text-3xl leading-snug mb-6 text-foreground">
+              "{t.text}"
+            </p>
+            <p className="eyebrow text-foreground/60">{t.name}</p>
           </div>
         ))}
       </div>
@@ -231,27 +287,48 @@ const Testimonials = () => (
   </section>
 );
 
+/* ---------- Unfamiliar Places teaser ---------- */
 const UnfamiliarTeaser = () => (
-  <section className="section-padding section-spacing bg-sand-light text-center">
-    <div className="max-w-2xl mx-auto">
-      <p className="body-sm text-muted-foreground uppercase tracking-widest mb-4">A series · Four times a year</p>
-      <h2 className="heading-lg mb-6">Unfamiliar Places.</h2>
-      <p className="body-lg text-muted-foreground mb-10">
-        Once a season we go somewhere new — climbing, bikepacking, ski touring, or hiking. Join the list to hear about the next one.
-      </p>
-      <Button variant="outline" size="lg" asChild>
-        <Link to="/unfamiliar-places">Learn More</Link>
-      </Button>
+  <section className="section-padding section-spacing">
+    <div className="max-w-5xl mx-auto grid grid-cols-12 gap-8 items-center">
+      <div className="col-span-12 md:col-span-7">
+        <p className="eyebrow mb-4">A series · four times a year</p>
+        <h2 className="heading-lg mb-6">
+          Unfamiliar<br />
+          <span className="italic text-accent">Places.</span>
+        </h2>
+        <p className="body-lg text-foreground/70 mb-8 max-w-lg">
+          Once a season we go somewhere new — climbing, bikepacking, ski touring, or
+          hiking. Join the list to hear about the next one.
+        </p>
+        <Button variant="outline" size="lg" asChild>
+          <Link to="/unfamiliar-places">Learn more</Link>
+        </Button>
+      </div>
+      <div className="col-span-12 md:col-span-5">
+        <img
+          src={communityImage}
+          alt="Friends gathered around a campfire in the forest at dusk"
+          loading="lazy"
+          className="w-full aspect-square object-cover"
+          width={800}
+          height={800}
+        />
+      </div>
     </div>
   </section>
 );
 
+/* ---------- Final CTA ---------- */
 const FinalCTA = () => (
-  <section className="section-padding section-spacing bg-sky text-center">
-    <div className="max-w-2xl mx-auto">
-      <h2 className="heading-lg text-primary-foreground mb-6">Ready to go?</h2>
-      <p className="body-lg text-primary-foreground/70 mb-10">
-        Find your next adventure and join a group of like-minded people.
+  <section className="section-padding py-32 md:py-40 text-primary-foreground" style={{ background: "hsl(var(--primary))" }}>
+    <div className="max-w-5xl mx-auto text-center">
+      <p className="eyebrow text-primary-foreground/70 mb-8">Next chapter</p>
+      <h2 className="heading-xl mb-10">
+        Ready<br />to go?
+      </h2>
+      <p className="body-lg text-primary-foreground/80 mb-12 max-w-xl mx-auto">
+        Find your next adventure and join a small group of like-minded people.
       </p>
       <Button variant="hero-outline" size="lg" asChild>
         <Link to="/adventures">Explore Adventures</Link>
@@ -264,9 +341,8 @@ const Index = () => (
   <>
     <Hero />
     <CategoryGrid />
-    <Values />
     <FeaturedAdventures />
-    <Community />
+    <Ethos />
     <UpcomingTrips />
     <AboutTeaser />
     <Testimonials />

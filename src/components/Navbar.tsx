@@ -15,13 +15,14 @@ const navItems = [
 const Navbar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  const isHome = location.pathname === "/";
-  const isTransparent = isHome;
+  // Editorial navbar: always on warm canvas.
+  const isTransparent = false;
+  
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isTransparent ? "bg-transparent" : "bg-background/95 backdrop-blur-sm border-b border-border"
+        isTransparent ? "bg-transparent" : "bg-background/90 backdrop-blur-md border-b border-border"
       }`}
     >
       <div className="section-padding flex items-center justify-between h-16 md:h-20">
