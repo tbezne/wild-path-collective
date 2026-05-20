@@ -33,12 +33,12 @@ const Hero = () => (
         </div>
 
         {/* Asymmetric image with peach offset block */}
-        <div className="col-span-12 lg:col-span-4 lg:absolute lg:top-0 lg:right-0 mt-10 lg:mt-4">
+        <div className="col-span-12 lg:col-span-4 lg:absolute lg:top-0 lg:right-0 lg:w-[32%] mt-10 lg:mt-4">
           <div className="relative">
             <img
               src={heroImage}
               alt="Hikers walking through a misty Slovenian mountain valley at golden hour"
-              className="w-full aspect-[4/5] object-cover shadow-2xl"
+              className="w-full aspect-[4/5] object-cover shadow-2xl relative z-0"
               width={800}
               height={1000}
             />
