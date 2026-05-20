@@ -13,7 +13,7 @@ const Hero = () => (
       <div className="relative grid grid-cols-12 gap-6 lg:gap-8">
         <div className="col-span-12 lg:col-span-9 z-10">
           <p className="eyebrow mb-6 md:mb-10">Found Outdoors — Est. Slovenia</p>
-          <h1 className="font-display text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] tracking-tight uppercase text-primary font-extrabold">
+          <h1 className="font-display text-[3rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[8rem] leading-[0.85] tracking-tight uppercase text-primary font-extrabold">
             Move
             <br />
             <span className="block ml-[8%] lg:ml-[18%] text-foreground">together.</span>
