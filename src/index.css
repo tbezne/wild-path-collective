@@ -6,66 +6,66 @@
 
 @layer base {
   :root {
-    /* Warm off-white canvas, deep forest ink */
-    --background: 40 38% 98%;
-    --foreground: 108 22% 22%;
+    /* White canvas, anthracite ink */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 22%;
 
-    --card: 40 30% 96%;
-    --card-foreground: 108 22% 22%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 22%;
 
-    --popover: 40 38% 98%;
-    --popover-foreground: 108 22% 22%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 22%;
 
-    /* Terracotta primary */
-    --primary: 13 50% 53%;
-    --primary-foreground: 40 38% 98%;
+    /* Wild rose primary */
+    --primary: 341 91% 66%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Peach secondary */
-    --secondary: 23 71% 80%;
-    --secondary-foreground: 108 22% 22%;
+    /* Sand secondary */
+    --secondary: 40 37% 92%;
+    --secondary-foreground: 0 0% 22%;
 
-    --muted: 40 25% 93%;
-    --muted-foreground: 108 12% 40%;
+    --muted: 40 37% 92%;
+    --muted-foreground: 0 0% 40%;
 
-    /* Sage accent */
-    --accent: 108 21% 56%;
-    --accent-foreground: 40 38% 98%;
+    /* Sky blue accent */
+    --accent: 202 59% 70%;
+    --accent-foreground: 0 0% 22%;
 
     --destructive: 0 70% 50%;
-    --destructive-foreground: 40 38% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 108 12% 86%;
-    --input: 108 12% 86%;
-    --ring: 13 50% 53%;
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 341 91% 66%;
 
     --radius: 0.125rem;
 
     /* Legacy semantic aliases — remapped to the new palette so existing
        components keep working. */
-    --sky: 108 22% 28%;        /* deep forest (used for logo plate, dark CTA) */
-    --sky-light: 108 21% 56%;  /* sage */
-    --sky-dark: 13 50% 45%;    /* deep terracotta */
-    --sand: 23 71% 80%;        /* peach */
-    --sand-light: 23 50% 94%;  /* warm wash */
-    --deep-red: 108 22% 22%;   /* deep forest */
-    --deep-red-light: 108 22% 33%;
-    --wild-pink: 13 50% 53%;   /* terracotta */
-    --wild-pink-light: 23 71% 70%;
-    --charcoal: 108 22% 18%;
-    --charcoal-light: 108 12% 40%;
-    --cream: 40 38% 96%;
+    --sky: 202 59% 70%;        /* sky blue */
+    --sky-light: 202 60% 85%;  /* lighter sky */
+    --sky-dark: 202 50% 55%;   /* deeper sky */
+    --sand: 40 37% 92%;        /* sand */
+    --sand-light: 40 30% 96%;  /* warm wash */
+    --deep-red: 0 0% 22%;     /* anthracite */
+    --deep-red-light: 0 0% 35%;
+    --wild-pink: 341 91% 66%; /* wild rose */
+    --wild-pink-light: 341 80% 78%;
+    --charcoal: 0 0% 22%;
+    --charcoal-light: 0 0% 40%;
+    --cream: 40 30% 96%;
 
     --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-display: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
 
-    --sidebar-background: 40 38% 98%;
-    --sidebar-foreground: 108 22% 22%;
-    --sidebar-primary: 13 50% 53%;
-    --sidebar-primary-foreground: 40 38% 98%;
-    --sidebar-accent: 40 25% 93%;
-    --sidebar-accent-foreground: 108 22% 22%;
-    --sidebar-border: 108 12% 86%;
-    --sidebar-ring: 13 50% 53%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 22%;
+    --sidebar-primary: 341 91% 66%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 37% 92%;
+    --sidebar-accent-foreground: 0 0% 22%;
+    --sidebar-border: 40 20% 88%;
+    --sidebar-ring: 341 91% 66%;
   }
 }
 
